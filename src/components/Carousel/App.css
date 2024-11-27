@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.buttons {
+    width: 100%;
+    position: relative;
+    margin: 5px auto;
+    inset: 0;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons button {
+    border-radius: 100%;
+    background-color: white;
+    opacity: 0.5;
+}
