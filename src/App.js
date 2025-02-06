@@ -1,11 +1,23 @@
 import { useState, useEffect } from "react";
-import { Carousel } from "./components/Carousel";
-import { ChevronLeft, ChevronRight } from "react-feather";
+import { ImageCarousel } from "./components/ImageCarousel";
+import { AnimatedCounter } from "./components/AnimatedCounter";
 
 const images = [
-  ["../imgs/1.png", "Sensory integration"],
-  ["../imgs/2.png", "Defectologist"],
-  ["../imgs/3.png", "Speech therapist"],
+  {
+    src: '../imgs/1.png',
+    alt: 'Sensory integration',
+    title: 'Sensory integration',
+  },
+  {
+    src: '../imgs/2.png',
+    alt: 'Defectologist',
+    title: 'Defectologist',
+  },
+  {
+    src: '../imgs/3.png',
+    alt: 'Speech therapist',
+    title: 'Speech therapist',
+  },
 ];
 
 function App() {
@@ -13,154 +25,62 @@ function App() {
   // const [products, setProducts] = useState([]);
 
   return (
-    <>
-      <div className="first-slide m-0">
-        <header className="flex flex-row">
-          <div className="header-left_side rounded-full"><img className="rounded-full" src={"../imgs/logo.png"} width={300} height={300}></img></div>
-          <div className="header-right_side flex flex-row items-center justify-between">
-            <a className="header-right_side-button" href="">About us</a>
-            <a className="header-right_side-button" href="">Programs</a>
-            <a className="header-right_side-button" href="">Forum</a>
-            <a className="header-right_side-button" href="">Contact</a>
-            <button className="header-right_side-contact">Log in</button>
+    <div className="slides snap-y snap-mandatory h-screen w-screen">
+      <div className="first-slide w-screen snap-center m-0">
+        <header className="px-16 py-4 flex items-center justify-between">
+          <img src={"../imgs/logo.png"} className="w-24 rounded-full"></img>
+          <div className="flex items-center justify-between w-2/5 h-12">
+            <a href="" className="text-white text-lg">About us</a>
+            <a href="" className="text-white text-lg">Programs</a>
+            <a href="" className="text-white text-lg">Forum</a>
+            <a href="" className="text-white text-lg">Contact</a>
+            <button className="w-28 h-full bg-custom-blue text-white text-lg rounded-lg">Log in</button>
           </div>
         </header>
-        <div className="title">
-          {/* {loading} */}
-          <h2 className="title-text1 font-bold">
-            We will<br></br>overcome<br></br>autism!
-          </h2>
-          <h2 className="title-text2 font-semibold text-right text-6xl leading-tight">
-            We use an<br></br> individual approach,<br></br> advanced techniques
-            and<br></br> create a space for development<br></br> and support
-          </h2>
-          <h1 className="title-text3 font-semibold mt-40">
-            Correction programs
-          </h1>
-
-          <div className="flex flex-row justify-center items-center gap-10">
-            <button className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-              <ChevronLeft size={40} />
-            </button>
-            <div className="flex flex-col">
-              <img
-                className="carousel-image"
-                src={"../imgs/1.png"}
-                alt=""
-              ></img>
-              <h3 className="text-white/100 text-3xl text-center">
-                Sensory integration
-              </h3>
-            </div>
-            <div className="flex flex-col">
-              <img
-                className="carousel-image2"
-                src={"../imgs/2.png"}
-                alt=""
-              ></img>
-              <h3 className="text-white/100 text-4xl text-center">
-                Defectologist
-              </h3>
-            </div>
-            <div className="flex flex-col">
-              <img
-                className="carousel-image"
-                src={"../imgs/3.png"}
-                alt=""
-              ></img>
-              <h3 className="text-white/100 text-3xl text-center">
-                Speech therapist
-              </h3>
-            </div>
-            <button className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-              <ChevronRight size={40} />
-            </button>
+        <div className="px-32 py-8">
+          <h1 className="text-9xl font-bold text-custom-blue">We will <br></br>overcome <br></br>autism!</h1>
+          <h2 className="text-6xl font-bold text-custom-white text-right">We use an <br></br>
+individual approach, <br></br>
+advanced techniques and <br></br>
+create a space for development <br></br>
+and support</h2>
+          <ImageCarousel images={images} />
+        </div>
+      </div>
+      <div className="second-slide w-screen h-screen snap-center p-8">
+        <h1 className="text-7xl text-custom-orange font-semibold">More than <AnimatedCounter start={300} end={500} duration={0.9} className={"font-bold text-9xl"}/> <br></br>
+        children received help</h1>
+        <h2 class="mb-10 text-6xl text-custom-darkorange mt-12">Our advantages:</h2>
+        <ul class="list-none m-0 p-0">
+          <li class="flex items-center mb-10 text-custom-darkorange text-5xl">
+            <span class="w-16 h-16 border-4 border-[#88281C66] rounded-full inline-flex justify-center items-center mr-[10px] font-bold text-5xl">1</span>
+            Personal approach
+          </li>
+          <li class="flex items-center mb-10 text-custom-darkorange text-5xl">
+            <span class="w-16 h-16 border-4 border-[#88281C66] rounded-full inline-flex justify-center items-center mr-[10px] font-bold text-5xl">2</span>
+            Modern programs
+          </li>
+          <li class="flex items-center mb-10 text-custom-darkorange text-5xl">
+            <span class="w-16 h-16 border-4 border-[#88281C66] rounded-full inline-flex justify-center items-center mr-[10px] font-bold text-5xl">3</span>
+            Proven technique
+          </li>
+        </ul>
+      </div>
+      <div className="forum-slide w-screen h-screen snap-center bg-custom-lightblue">
+        <div className="flex justify-stetch h-2/3">
+          <div className="p-20 w-2/5">
+            <h1 className="text-right text-custom-white text-8xl mb-10">Our Specialists</h1>
+            <p className="text-right text-white text-4xl font-light">The center employs specialists with many years of experience in working with children with ASD</p>
           </div>
-          {/* <Carousel
-          children={images.map((data) => (
-          ))}
-        /> */}
+          <img src={"../imgs/georgedroyd.png"} className="w-2/3 h-full"></img>
         </div>
-      </div>
-      <div className="second-slide">
-        <h1 className="second-slide-title font-semibold">
-          More than <span>500</span>
-          <br></br>children received help
-        </h1>
-        <h2 className="second-slide-title2">Our advantages:</h2>
-        <ol>
-          <li>
-            <h2 className="second-slide-title3">Personal approach</h2>
-          </li>
-          <li>
-            <h2 className="second-slide-title3">Modern programs</h2>
-          </li>
-          <li>
-            <h2 className="second-slide-title3">Proven technique</h2>
-          </li>
-        </ol>
-      </div>
-      <div className="forum-slide">
-        <div className="forum-slide_titles flex flex-row pt-20">
-          <h2 className="forum-slide_title1 font-semibold">
-            Communication with other<br></br> parents of children<br></br> from
-            the center,<br></br> collective<br></br> support
-          </h2>
-          <div className="forum-slide_right-side flex flex-col">
-            <h2 className="forum-slide_title2 font-semibold">
-              Forum for parents
-            </h2>
-            <div className="forum-slide_right-side_button">
-              <h3>Click on the button to go to the forum</h3>
-              <button>Join</button>
-            </div>
-          </div>
+        <div className="flex justify-around h-1/3 items-center">
+          <h1 className="text-custom-darkblue text-3xl font-semibold w-1/4 text-center">Continuous training and professional development</h1>
+          <h1 className="text-custom-darkblue text-3xl font-semibold w-1/4 text-center">Certified specialists</h1>
+          <h1 className="text-custom-darkblue text-3xl font-semibold w-1/4 text-center">Individual approach to each child</h1>
         </div>
-      </div>
-      <div class="container">
-
-    <div class="form-section">
-      <h2 class="text">Запишитесь на консультацию прямо сейчас!</h2>
-      <form action="#" method="POST">
-        <div class="form-row">
-          <label for="name">Как вас зовут? <span style={{color: "88281C"}}>*</span></label>
-          <input type="text" id="name" name="name" placeholder="Имя" required></input>
-        </div>
-
-        <div class="form-row">
-          <label for="contact">Контактный номер телефона или email <span style={{color: "88281C"}}>*</span></label>
-          <input type="text" id="contact" name="contact" placeholder="+996 (000) 000-000" required></input>
-        </div>
-
-        <div class="form-row">
-          <label for="age">Возраст ребенка <span style={{color: "88281C"}}>*</span></label>
-          <input type="number" id="age" name="age" placeholder="Возраст" required></input>
-        </div>
-
-        <div class="form-row">
-          <label for="purpose">Цель обращения <span style={{color: "88281C"}}>*</span></label>
-          <input type="text" id="purpose" name="purpose" placeholder="логопед, психолог и т.д." required></input>
-        </div>
-
-        <div class="form-row">
-          <label for="comment">Комментарий</label>
-          <textarea id="comment" name="comment" placeholder="Дополнительная информация"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Отправить</button>
-      </form>
-    </div>
-    <div class="footer">
-      <p>Матвеева 270, Бишкек, Кыргызстан</p>
-      <p>+996 (700) 000-000</p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@LetsdefeatautismKG"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
       </div>
     </div>
-  </div>
-    </>
   );
 }
 
